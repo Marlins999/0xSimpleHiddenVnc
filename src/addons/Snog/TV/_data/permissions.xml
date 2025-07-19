@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+  <permission permission_group_id="forum" permission_id="snog_edit_episodes" permission_type="flag" depend_permission_id="editOwnPost" interface_group_id="tvthreads_interface" display_order="2"/>
+  <permission permission_group_id="forum" permission_id="snog_edit_shows" permission_type="flag" depend_permission_id="editOwnPost" interface_group_id="tvthreads_interface" display_order="1"/>
+  <permission permission_group_id="tvthreads_interface" permission_id="add_info" permission_type="flag" interface_group_id="tvthreads_interface" display_order="6"/>
+  <permission permission_group_id="tvthreads_interface" permission_id="new_episode" permission_type="flag" interface_group_id="tvthreads_interface" display_order="5"/>
+  <permission permission_group_id="tvthreads_interface" permission_id="new_season" permission_type="flag" interface_group_id="tvthreads_interface" display_order="4"/>
+  <permission permission_group_id="tvthreads_interface" permission_id="new_show" permission_type="flag" interface_group_id="tvthreads_interface" display_order="3"/>
+</permissions>

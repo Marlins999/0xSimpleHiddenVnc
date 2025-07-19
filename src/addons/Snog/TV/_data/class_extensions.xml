@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class_extensions>
+  <extension from_class="XF\Admin\Controller\Forum" to_class="Snog\TV\XF\Admin\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Criteria\User" to_class="Snog\TV\XF\Criteria\User" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Forum" to_class="Snog\TV\XF\Entity\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Node" to_class="Snog\TV\XF\Entity\Node" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Option" to_class="Snog\TV\XF\Entity\Option" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Post" to_class="Snog\TV\XF\Entity\Post" execute_order="10" active="1"/>
+  <extension from_class="XF\Entity\Thread" to_class="Snog\TV\XF\Entity\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Forum" to_class="Snog\TV\XF\Pub\Controller\Forum" execute_order="10" active="1"/>
+  <extension from_class="XF\Pub\Controller\Thread" to_class="Snog\TV\XF\Pub\Controller\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\Repository\Post" to_class="Snog\TV\XF\Repository\Post" execute_order="10" active="1"/>
+  <extension from_class="XF\Repository\Thread" to_class="Snog\TV\XF\Repository\Thread" execute_order="10" active="1"/>
+  <extension from_class="XF\Service\Post\Deleter" to_class="Snog\TV\XF\Service\Post\Deleter" execute_order="10" active="1"/>
+  <extension from_class="XF\Service\Thread\Deleter" to_class="Snog\TV\XF\Service\Thread\Deleter" execute_order="10" active="1"/>
+</class_extensions>

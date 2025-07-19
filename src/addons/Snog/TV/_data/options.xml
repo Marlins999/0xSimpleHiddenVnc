@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <option option_id="TvThreads_apikey" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="TvThreads" display_order="1"/>
+  </option>
+  <option option_id="TvThreads_category" edit_format="callback" data_type="array">
+    <default_value>[]</default_value>
+    <edit_format_params>Snog\TV\Option\Category::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="500"/>
+  </option>
+  <option option_id="TvThreads_cdn_path" edit_format="textbox" data_type="string">
+    <default_value></default_value>
+    <relation group_id="TvThreads" display_order="35"/>
+  </option>
+  <option option_id="TvThreads_crosslink" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="325"/>
+  </option>
+  <option option_id="TvThreads_episode_exclude" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="520"/>
+  </option>
+  <option option_id="TvThreads_force_comments" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="330"/>
+  </option>
+  <option option_id="TvThreads_forum" edit_format="callback" data_type="array" validation_class="Snog\TV\Option\Forum" validation_method="verifyOption">
+    <default_value>[]</default_value>
+    <edit_format_params>Snog\TV\Option\Forum::renderSelectMultiple</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="300"/>
+  </option>
+  <option option_id="TvThreads_language" edit_format="textbox" data_type="string" validation_class="Snog\TV\Option\Language" validation_method="verifyOption">
+    <default_value>en</default_value>
+    <edit_format_params>size=5
+maxlength=5</edit_format_params>
+    <relation group_id="TvThreads" display_order="1000"/>
+  </option>
+  <option option_id="TvThreads_left" edit_format="radio" data_type="unsigned_integer">
+    <default_value>1</default_value>
+    <edit_format_params>1 = {{ phrase('left') }}
+2 = {{ phrase('right') }}</edit_format_params>
+    <relation group_id="TvThreads" display_order="410"/>
+  </option>
+  <option option_id="TvThreads_mix" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="20"/>
+  </option>
+  <option option_id="TvThreads_multiple" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="25"/>
+  </option>
+  <option option_id="TvThreads_replace_all" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="1100"/>
+  </option>
+  <option option_id="TvThreads_show_forum" edit_format="callback" data_type="array">
+    <default_value>[3,4,6]</default_value>
+    <edit_format_params>Snog\TV\Option\Thread::renderForumCheckboxes</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="310"/>
+  </option>
+  <option option_id="TvThreads_show_thread" edit_format="callback" data_type="array">
+    <default_value>[1,3,6,4,5,8,9]</default_value>
+    <edit_format_params>Snog\TV\Option\Thread::renderCheckboxes</edit_format_params>
+    <sub_options>*</sub_options>
+    <relation group_id="TvThreads" display_order="400"/>
+  </option>
+  <option option_id="TvThreads_sort" edit_format="select" data_type="string">
+    <default_value>DESC</default_value>
+    <edit_format_params>DESC={{ phrase('descending') }}
+ASC={{ phrase('ascending') }}</edit_format_params>
+    <relation group_id="TvThreads" display_order="510"/>
+  </option>
+  <option option_id="TvThreads_update" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="335"/>
+  </option>
+  <option option_id="TvThreads_use_genres" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="320"/>
+  </option>
+  <option option_id="TvThreads_use_rating" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="10"/>
+  </option>
+  <option option_id="TvThreads_usecdn" edit_format="onoff" data_type="boolean">
+    <default_value>0</default_value>
+    <relation group_id="TvThreads" display_order="30"/>
+  </option>
+</options>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <phrase title="cron_entry.snogTV1" version_id="2010071" version_string="2.1.0.1"><![CDATA[Update TV episode posts that are missing images or plots]]></phrase>
+  <phrase title="cron_entry.snogTV_replace_all" version_id="2010071" version_string="2.1.0.1"><![CDATA[Replace all TV images if option is selected]]></phrase>
+  <phrase title="option.TvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API key]]></phrase>
+  <phrase title="option.TvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories for TV shows]]></phrase>
+  <phrase title="option.TvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[CDN path]]></phrase>
+  <phrase title="option.TvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Crosslink into all genre forums]]></phrase>
+  <phrase title="option.TvThreads_episode_exclude" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Exclude TV show title in season episode threads]]></phrase>
+  <phrase title="option.TvThreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Force comments to second post]]></phrase>
+  <phrase title="option.TvThreads_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Forums for TV threads]]></phrase>
+  <phrase title="option.TvThreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show information language]]></phrase>
+  <phrase title="option.TvThreads_left" version_id="2000070" version_string="2.0.0"><![CDATA[TV show poster position]]></phrase>
+  <phrase title="option.TvThreads_mix" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Allow mixed content]]></phrase>
+  <phrase title="option.TvThreads_multiple" version_id="2000870" version_string="2.0.8"><![CDATA[Allow TV shows to be posted multiple times]]></phrase>
+  <phrase title="option.TvThreads_replace_all" version_id="2010071" version_string="2.1.0.1"><![CDATA[Replace all TV images]]></phrase>
+  <phrase title="option.TvThreads_show_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Items to show in forum thread list]]></phrase>
+  <phrase title="option.TvThreads_show_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Items to show in threads]]></phrase>
+  <phrase title="option.TvThreads_sort" version_id="2011600" version_string="2.1.16"><![CDATA[Sort Seasons]]></phrase>
+  <phrase title="option.TvThreads_update" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enable manual updates]]></phrase>
+  <phrase title="option.TvThreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use forum genre limiting]]></phrase>
+  <phrase title="option.TvThreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use rating system]]></phrase>
+  <phrase title="option.TvThreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Use CDN]]></phrase>
+  <phrase title="option_explain.TvThreads_apikey" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter your API key for The Movie Database]]></phrase>
+  <phrase title="option_explain.TvThreads_category" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Categories selected in this list can only be used to create forums dedicated to individual TV shows.<br />Do not select any categories if you do not wish to use this option.]]></phrase>
+  <phrase title="option_explain.TvThreads_cdn_path" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you are using your own CDN, enter the CDN path here.<br />Example: http://cdn.yourpath.com/data<br />DO NOT end the path with a /]]></phrase>
+  <phrase title="option_explain.TvThreads_crosslink" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[To place a redirect link to the main TV thread in all genre limited forums that a TV show can belong to, check this box. <font style="color:blue;">Genre limiting must be enabled for this to work</font><br />EXAMPLE: A TV show is in these genres: Drama, Science Fiction, Thriller<br />A member posts the show in the Science Fiction forum.<br />Redirect links will be placed in the Drama and Thriller forums.]]></phrase>
+  <phrase title="option_explain.TvThreads_episode_exclude" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to exclude the TV show title in the title for episode threads.<br />This may be needed if tv show names and episode titles exceed the XenForo thread title limit.]]></phrase>
+  <phrase title="option_explain.TvThreads_force_comments" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box if you want to force any comments entered with a new TV thread to be posted as the second post in the new TV thread.<br /><b>NOTE:</b> This does not change existing threads. This only affects the first post in a new TV thread.]]></phrase>
+  <phrase title="option_explain.TvThreads_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the forums that will be used for TV threads.<br />SHIFT or CTRL click to select multiple forums.<br /><b>NOTE: </b>The forums selected here MUST be used exclusively for TV threads. They should not be used for any other type of thread. They MUST NOT be the same forums used for movie threads if you have the TMDb Movie Thread Starter installed.]]></phrase>
+  <phrase title="option_explain.TvThreads_language" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Enter the ISO 639-1 Language Code that will be used for TV information.<br />These codes are available at <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">List of ISO 639-1 codes</a><br /><br />You may also include a two letter country code in the language selection (en-US, en-GB, pt-PT, pt-BR, etc...).<br />This is a list of the two letter country codes: <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2 Country Codes</a><br /><br /><b>NOTE:</b> There is no guarantee that the translation to the language selected will be the proper translation. And there is no guarantee there will be a translation of a TV show at The Movie Database. Those are both handled by The Movie Database and not translated by this add-on.<br /><br />Changing language will NOT change threads already posted. Only new threads will post in the new language.]]></phrase>
+  <phrase title="option_explain.TvThreads_left" version_id="2000070" version_string="2.0.0"><![CDATA[Select the position for the TV show poster in threads]]></phrase>
+  <phrase title="option_explain.TvThreads_mix" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to allow normal threads to be created in a TV forum.<br /><font style="color:blue;">NOTE: This only works in main TV Forums. It does not work in TV Season forums.</font>]]></phrase>
+  <phrase title="option_explain.TvThreads_multiple" version_id="2000870" version_string="2.0.8"><![CDATA[Check this box to allow a TV show to be posted more than once.]]></phrase>
+  <phrase title="option_explain.TvThreads_replace_all" version_id="2010071" version_string="2.1.0.1"><![CDATA[This option is for those that didn't store their images locally before upgrading to XF2, or for those that want to update all of the TV images in their forums, threads and posts. When this box is checked, a cron task will run to replace ALL images for ALL TV forums, threads and posts.<br /><b>NOTE:</b> This option will reset itself after all images have been replaced.<br />This option may take a long time to complete. Be patient, it will eventually finish updating.]]></phrase>
+  <phrase title="option_explain.TvThreads_show_forum" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the items to show in the forum thread list]]></phrase>
+  <phrase title="option_explain.TvThreads_show_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Select the items to be shown in the first post of a TV thread]]></phrase>
+  <phrase title="option_explain.TvThreads_sort" version_id="2011600" version_string="2.1.16"><![CDATA[The default sort order when a new season forum is created is descending. To sort them in ascending order, check this box.]]></phrase>
+  <phrase title="option_explain.TvThreads_update" version_id="2000070" version_string="2.0.0"><![CDATA[Checking this box will enable manual updates for existing threads that DO NOT contain TV show information. Users must have 'Can add missing TV information' permission set to 'Yes'.]]></phrase>
+  <phrase title="option_explain.TvThreads_use_genres" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the type of TV shows posted in each forum to a specific genre. Check this box to enable this option. The genre for each forum is specified in Forums->Nodes. Click on the forum you wish to limit and select the genres you wish to allow in the forum.]]></phrase>
+  <phrase title="option_explain.TvThreads_use_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to turn on the TV show rating system.]]></phrase>
+  <phrase title="option_explain.TvThreads_usecdn" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check this box to use your own CDN for all poster images.]]></phrase>
+  <phrase title="option_group.TvThreads" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb TV thread starter]]></phrase>
+  <phrase title="option_group_description.TvThreads" version_id="2000070" version_string="2.0.0"><![CDATA[Options for the TMDb TV thread starter add-on]]></phrase>
+  <phrase title="permission.forum_snog_edit_episodes" version_id="2000070" version_string="2.0.0"><![CDATA[Can edit TV episodes]]></phrase>
+  <phrase title="permission.forum_snog_edit_shows" version_id="2000070" version_string="2.0.0"><![CDATA[Can edit TV shows]]></phrase>
+  <phrase title="permission.tvthreads_interface_add_info" version_id="2000070" version_string="2.0.0"><![CDATA[Can add missing TV information]]></phrase>
+  <phrase title="permission.tvthreads_interface_new_episode" version_id="2000070" version_string="2.0.0"><![CDATA[Can add new episode to TV season]]></phrase>
+  <phrase title="permission.tvthreads_interface_new_season" version_id="2000070" version_string="2.0.0"><![CDATA[Can add new season to TV show]]></phrase>
+  <phrase title="permission.tvthreads_interface_new_show" version_id="2000070" version_string="2.0.0"><![CDATA[Can add TV show to category]]></phrase>
+  <phrase title="permission_interface.tvthreads_interface" version_id="2000070" version_string="2.0.0"><![CDATA[TV thread starter]]></phrase>
+  <phrase title="snog_tv_add_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add episode]]></phrase>
+  <phrase title="snog_tv_add_first" version_id="2010071" version_string="2.1.0.1"><![CDATA[Add TV info to first post]]></phrase>
+  <phrase title="snog_tv_add_info" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add TV show info]]></phrase>
+  <phrase title="snog_tv_add_season" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add season]]></phrase>
+  <phrase title="snog_tv_add_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add TV show]]></phrase>
+  <phrase title="snog_tv_air_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Air date]]></phrase>
+  <phrase title="snog_tv_already_rated" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[If you have already rated this show, your current rating is shown]]></phrase>
+  <phrase title="snog_tv_available_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Available TV genres]]></phrase>
+  <phrase title="snog_tv_available_genre_explain" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[You can limit the TV show type by genre in this forum.<br />If you select ALL then any TV genre will be allowed.<br />If you select any other genres then new threads for this forum will be limited to TV shows in those genres.<br />NOTE: If someone tries to post a TV show in a genre that does not have a node assigned to it, then they will receive an error message stating that the genre is not allowed to be posted. So, if you decide to keep TV genres in separate forums, be sure to either create a forum for every genre listed or create one forum set to accept ALL genres. The ALL genre is the last to be considered for a new thread. That way, if someone tries to post a TV show with a different genre for the node they are posting in, it will be automatically posted in the correct node without an error.]]></phrase>
+  <phrase title="snog_tv_cast" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Cast]]></phrase>
+  <phrase title="snog_tv_change_rating" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Add/Change rating]]></phrase>
+  <phrase title="snog_tv_change_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Change thread title to TV show title]]></phrase>
+  <phrase title="snog_tv_check_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Check for new poster]]></phrase>
+  <phrase title="snog_tv_creator" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Creator]]></phrase>
+  <phrase title="snog_tv_edit_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit TV episode]]></phrase>
+  <phrase title="snog_tv_edit_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Edit TV show]]></phrase>
+  <phrase title="snog_tv_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode]]></phrase>
+  <phrase title="snog_tv_episode_enter_episode_number" version_id="2010270" version_string="2.1.2"><![CDATA[All you need to enter is the episode number for this season. (EXAMPLE: 5)]]></phrase>
+  <phrase title="snog_tv_episode_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb episode link]]></phrase>
+  <phrase title="snog_tv_episode_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Episode number]]></phrase>
+  <phrase title="snog_tv_error_aired_date" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Aired date must be formatted YYYY-MM-DD]]></phrase>
+  <phrase title="snog_tv_error_badapi" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb API Key is not valid]]></phrase>
+  <phrase title="snog_tv_error_episode_link" version_id="2000770" version_string="2.0.7"><![CDATA[When posting a TV episode you must enter both the Season number and Episode number]]></phrase>
+  <phrase title="snog_tv_error_episode_not_found" version_id="2000770" version_string="2.0.7"><![CDATA[That episode was not found]]></phrase>
+  <phrase title="snog_tv_error_episode_number" version_id="2000870" version_string="2.0.8"><![CDATA[You did not enter a valid episode number]]></phrase>
+  <phrase title="snog_tv_error_forum_exists" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show forum already exists]]></phrase>
+  <phrase title="snog_tv_error_genre_not_allowed" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show genre not allowed]]></phrase>
+  <phrase title="snog_tv_error_id_not_valid" version_id="2000170" version_string="2.0.1"><![CDATA[TMDb TV ID not valid]]></phrase>
+  <phrase title="snog_tv_error_invalid_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The episode number is not valid for this TV show]]></phrase>
+  <phrase title="snog_tv_error_movie_id" version_id="2000170" version_string="2.0.1"><![CDATA[You are trying to post a movie in a TV forum]]></phrase>
+  <phrase title="snog_tv_error_no_genre" version_id="2000170" version_string="2.0.1"><![CDATA[Genre limiting is enabled and no genre is selected for this forum]]></phrase>
+  <phrase title="snog_tv_error_no_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[No TV show entered]]></phrase>
+  <phrase title="snog_tv_error_not_found" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[The TV show was not found at The Movie Database]]></phrase>
+  <phrase title="snog_tv_error_not_returned" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV Information Not Returned from TMDB]]></phrase>
+  <phrase title="snog_tv_error_show_posted" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[That TV show has already been posted]]></phrase>
+  <phrase title="snog_tv_error_valid_3166" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 3166-1 Country Code]]></phrase>
+  <phrase title="snog_tv_error_valid_639" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Please enter a valid ISO 639-1 Language Code]]></phrase>
+  <phrase title="snog_tv_first_aired" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[First aired]]></phrase>
+  <phrase title="snog_tv_genre" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Genre]]></phrase>
+  <phrase title="snog_tv_guest_stars" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Guest stars]]></phrase>
+  <phrase title="snog_tv_information" version_id="2000070" version_string="2.0.0"><![CDATA[TV show information provided by <a href="https://themoviedb.org" target="_blank" >The Movie Database</a>]]></phrase>
+  <phrase title="snog_tv_link" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb TV show link]]></phrase>
+  <phrase title="snog_tv_overview" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Overview]]></phrase>
+  <phrase title="snog_tv_post_episode" version_id="2000770" version_string="2.0.7"><![CDATA[If you wish to post an episode for this TV show, enter the Season and Episode numbers]]></phrase>
+  <phrase title="snog_tv_post_new_episode" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post new episode]]></phrase>
+  <phrase title="snog_tv_post_new_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new TV show]]></phrase>
+  <phrase title="snog_tv_post_show" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb TV show link or TV show ID]]></phrase>
+  <phrase title="snog_tv_post_show_thread" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Post a new thread or TV show]]></phrase>
+  <phrase title="snog_tv_post_show_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TMDb TV show link, TV show ID, or thread title]]></phrase>
+  <phrase title="snog_tv_poster_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is available]]></phrase>
+  <phrase title="snog_tv_poster_not_available" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[A new poster is not available]]></phrase>
+  <phrase title="snog_tv_save_poster" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Save poster]]></phrase>
+  <phrase title="snog_tv_season" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Season]]></phrase>
+  <phrase title="snog_tv_season_number" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Season number]]></phrase>
+  <phrase title="snog_tv_show_lookup" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[Don't have the TMDb Link or ID for your TV show? Go to <a href="https://themoviedb.org" target="_blank" >The Movie Database</a> and look it up.]]></phrase>
+  <phrase title="snog_tv_started_x_threads" version_id="2000570" version_string="2.0.5"><![CDATA[User has started at least X TV threads]]></phrase>
+  <phrase title="snog_tv_title" version_id="1000010" version_string="1.0.0 Alpha"><![CDATA[TV show title]]></phrase>
+  <phrase title="snog_tv_trailer" version_id="2000970" version_string="2.0.9"><![CDATA[Trailer]]></phrase>
+  <phrase title="snog_tv_trailer_explain" version_id="2000970" version_string="2.0.9"><![CDATA[Enter either a youtube video ID or a youtube link]]></phrase>
+  <phrase title="snog_tv_vote" version_id="2000270" version_string="2.0.2"><![CDATA[Vote]]></phrase>
+</phrases>

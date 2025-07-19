@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template_modifications>
+  <modification type="public" template="EWRporta_article_macros" modification_key="snogTVPortaComment1" description="Changes display in EWRPorta to properly display tv episode info in comments" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/{{ bb_code\(.*\) }}/Us]]></find>
+    <replace><![CDATA[<xf:if is="$post.TVPost.tv_episode">
+    <xf:include template="snog_tv_episode" />
+<xf:else />
+    $0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="EWRporta_article_macros" modification_key="snogTVPortaComment2" description="Changes edit link in EWRPorta to properly display tv episode edit info in comments" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<a href="{{ link\('posts\/edit', \$post\) }}"(?:[^>]*>){2}/]]></find>
+    <replace><![CDATA[<xf:if is="$post.TVPost.tv_episode">
+    <a href="{{ link('episode/editepisode', $post) }}"
+        class="actionBar-action actionBar-action--edit actionBar-action--menuItem"
+        data-xf-click="quick-edit"
+        data-editor-target="#js-post-{$post.post_id} .js-quickEditTarget"
+        data-menu-closer="true">{{ phrase('edit') }}</a>
+<xf:else />
+    $0
+</xf:if>	]]></replace>
+  </modification>
+  <modification type="public" template="EWRporta_article_view" modification_key="snogTV49" description="Changes display in EWRPorta to properly display tv info" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro template="EWRporta_article_macros" name="article_post".*\/>/Us]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is not empty">
+	<xf:if is="!$articlePost.TVPost.tv_episode">
+		<xf:include template="snog_tv_XenPorta_show" />
+	<xf:else />
+		<xf:include template="snog_tv_XenPorta_episode" />
+	</xf:if>
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="category_view" modification_key="snogTV16" description="Adds add tv show button to category display (template: snog_tv_add_show)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:breadcrumb source="$category.getBreadcrumbs(false)" />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="in_array($category.node_id, $xf.options.TvThreads_category)">
+	<xf:include template="snog_tv_add_show" />
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="category_view" modification_key="snogTV18" description="Adds TV css to category list (template: snog_tv.less)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:title>{$category.title}</xf:title>]]></find>
+    <replace><![CDATA[<xf:if is="in_array($category.node_id,$xf.options.TvThreads_category)">
+	<xf:css src="snog_tv.less" />
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="category_view" modification_key="snogTV44" description="Adds required TMDb credit at bottom of category" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="block-container">
+			<div class="block-body">
+				<xf:macro template="forum_list" name="node_list"
+					arg-children="{$nodeTree}"
+					arg-extras="{$nodeExtras}"
+					arg-depth="2" />
+			</div>
+		</div>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="in_array($category.node_id, $xf.options.TvThreads_category)">
+	<span class="tvhint">{{ phrase('snog_tv_information')}}</span>
+</xf:if>
+
+]]></replace>
+  </modification>
+  <modification type="admin" template="forum_edit" modification_key="snogTVAdmin1" description="Adds tv genres to forum editor" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$availableFields is not empty">]]></find>
+    <replace><![CDATA[<xf:if is="in_array($forum.node_id, $xf.options.TvThreads_forum) && $xf.options.TvThreads_use_genres && $availableGenres is not empty">
+	<hr class="formRowSep" />
+
+	<xf:checkboxrow name="available_genres" value="{$forum.TVnode.tv_genre}" listclass="field listColumns"
+		label="{{ phrase('snog_tv_available_genre') }}"
+		explain="{{ phrase('snog_tv_available_genre_explain') }}">
+
+		<xf:options source="$availableGenres" />
+	</xf:checkboxrow>
+</xf:if>
+
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="snogTV38" description="Adds TV filter options (template snog_tv_filter_options)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:above_last_updated]-->]]></find>
+    <replace><![CDATA[<xf:if is="(in_array($forum.node_id, $xf.options.TvThreads_forum))">
+	<xf:include template="snog_tv_filter_options" />
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="snogTV52" description="Adds TV sort options to filters in XF 2.1" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:option value="first_post_reaction_score">{{ phrase('first_message_reaction_score') }}</xf:option>]]></find>
+    <replace><![CDATA[$0
+<xf:if is="(in_array($forum.node_id, $xf.options.TvThreads_forum))">
+	<xf:option value="TV.tv_director">{{ phrase('snog_tv_creator') }}</xf:option>
+	<xf:option value="TV.tv_release">{{ phrase('snog_tv_first_aired') }}</xf:option>
+	<xf:option value="TV.tv_rating">{{ phrase('rating') }}</xf:option>
+	<xf:option value="TV.tv_genres">{{ phrase('snog_tv_genre') }}</xf:option>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_filters" modification_key="snogTV52A" description="Adds TV sort options to filters in XF 2.2" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:option value="{\$sortKey}".+foreach>/isU]]></find>
+    <replace><![CDATA[$0
+<xf:if is="(in_array($forum.node_id, $xf.options.TvThreads_forum))">
+	<xf:option value="TV.tv_director">{{ phrase('snog_tv_creator') }}</xf:option>
+	<xf:option value="TV.tv_release">{{ phrase('snog_tv_first_aired') }}</xf:option>
+	<xf:option value="TV.tv_rating">{{ phrase('rating') }}</xf:option>
+	<xf:option value="TV.tv_genres">{{ phrase('snog_tv_genre') }}</xf:option>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="snogTV24" description="Changes thread title prompt when posting in season forums (template: snog_tv_episode_prompt)" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:prefixinput.*placeholder="{\$forum.thread_prompt.*\/>#Us]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is not empty && $forum.TVForum.tv_parent_id">
+	<xf:include template="snog_tv_episode_prompt" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="snogTV25" description="Changes post link for episode forums" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[link('forums/post-thread', $forum)]]></find>
+    <replace><![CDATA[($forum.TVForum is not empty && $forum.TVForum.tv_parent_id) ? link('forums/newepisode', $forum) : $0]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="snogTV27" description="Remove poll option from episode post screen 2.1" execution_order="15" enabled="1" action="str_replace">
+    <find><![CDATA[$forum.canCreatePoll()]]></find>
+    <replace><![CDATA[{{ $forum.TVForum is empty ? $0 : $forum.canCreatePoll() && !$forum.TVForum.tv_parent_id }}
+]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="snogTV28" description="Remove poll option from TV forum post screen 2.1" execution_order="9" enabled="1" action="preg_replace">
+    <find><![CDATA[#\<xf\:if is\=\"\$forum.canCreatePoll\(\)\"\>(.*)<\/xf:if>#Us]]></find>
+    <replace><![CDATA[<xf:if is="!in_array($forum.node_id, $xf.options.TvThreads_forum)">
+	$0
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="forum_post_thread" modification_key="snogTV5" description="Changes thread title prompt when posting in TV forums (template: snog_tv_title_prompt)" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:prefixinput.*placeholder="{\$forum.thread_prompt.*\/>#Us]]></find>
+    <replace><![CDATA[<xf:if is="(in_array($forum.node_id, $xf.options.TvThreads_forum))">
+	<xf:include template="snog_tv_title_prompt" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV20" description="Adds TV show info to forum view (template: snog_tv_forum_header)" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#^<xf:title.*>$#m]]></find>
+    <replace><![CDATA[$0
+<xf:include template="snog_tv_forum_header" />]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV21" description="Changes post thread button to add season for TV forums (template: snog_tv_add_season) 2.1" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#\<xf\:pageaction if\=\"\$forum\.canCreateThread\(\)\"\>(.*)</xf:pageaction>#Us]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is not empty && !$forum.TVForum.tv_parent_id">
+	<xf:include template="snog_tv_add_season" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV21A" description="Changes post thread button to add season for TV forums (template: snog_tv_add_season) 2.2" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:pageaction if="\$forum.canCreateThread().+pageaction>/isU]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is not empty && !$forum.TVForum.tv_parent_id">
+	<xf:include template="snog_tv_add_season" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV22" description="Adds post thread button back in a new position (template: snog_tv_post_thread)" execution_order="11" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:ad position="forum_view_above_thread_list" arg-forum="{$forum}" />]]></find>
+    <replace><![CDATA[$0
+<xf:if is="$forum.TVForum is not empty && !$forum.TVForum.tv_parent_id">
+	<xf:if is="$forum.canCreateThread()">
+		<xf:include template="snog_tv_post_thread" />
+	</xf:if>
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV23" description="Changes post thread to post episode in season forums (template: snog_tv_add_episode) 2.1" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#\<xf\:pageaction if\=\"\$forum\.canCreateThread\(\)\"\>(.*)</xf:pageaction>#Us]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is not empty && $forum.TVForum.tv_parent_id">
+	<xf:include template="snog_tv_add_episode" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV23A" description="Changes post thread to post episode in season forums (template: snog_tv_add_episode) 2.2" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:pageaction if="\$forum.canCreateThread().+pageaction>/isU]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is not empty && $forum.TVForum.tv_parent_id">
+	<xf:include template="snog_tv_add_episode" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV29" description="Removes quick new thread prompt for season forums 2.1" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:macro template="thread_list_macros" name="quick_thread"
+					arg-forum="{$forum}"
+					arg-page="{$page}"
+					arg-order="{$sortInfo.order}"
+					arg-direction="{$sortInfo.direction}" />]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is empty || !$forum.TVForum.tv_season">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV29A" description="Removes quick new thread prompt for season forums 2.2" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:macro name="{{ \$templateOverrides.quick_thread_macro.+>/isU]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is empty || !$forum.TVForum.tv_season">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV39" description="Adds filter removal links (template: snog_tv_filter_removal)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$filters.last_days AND {$dateLimits.{$filters.last_days}}">]]></find>
+    <replace><![CDATA[<xf:include template="snog_tv_filter_removal" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV4" description="Changes post thread to post TV show" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[{{ phrase('post_thread') }}]]></find>
+    <replace><![CDATA[<xf:if is="in_array($forum.node_id, $xf.options.TvThreads_forum) && !$xf.options.TvThreads_mix">
+	{{ phrase('snog_tv_post_new_show') }}
+<xf:else />
+$0	
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV41" description="Removes forum description from default display" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:description>{$forum.Node.description|raw}</xf:description>]]></find>
+    <replace><![CDATA[<xf:if is="$forum.TVForum is empty">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV42" description="Adds required TMDb attribution at bottom of thread list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="block-outer block-outer--after">]]></find>
+    <replace><![CDATA[<xf:if is="(in_array($forum.node_id, $xf.options.TvThreads_forum)) || 
+	(in_array($forum.Node.parent_node_id, $xf.options.TvThreads_category))">
+	<span class="tvhint">{{ phrase('snog_tv_information')}}</span>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="forum_view" modification_key="snogTV51" description="Adds sort order phrases for TV shows in XF 2.1" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA['first_post_reaction_score': phrase('first_message_reaction_score')]]></find>
+    <replace><![CDATA[$0,
+'TV.tv_director': phrase('snog_tv_creator'),
+'TV.tv_release': phrase('snog_tv_first_aired'),
+'TV.tv_rating': phrase('rating'),
+'TV.tv_genres': phrase('snog_tv_genre')]]></replace>
+  </modification>
+  <modification type="admin" template="helper_criteria" modification_key="snogTVAdmin2" description="Adds TV thread started to criteria" execution_order="11" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:user:content_after_messages]-->]]></find>
+    <replace><![CDATA[<xf:option name="user_criteria[tv_posted][rule]" value="tv_posted" selected="{$criteria.tv_posted}"
+	label="{{ phrase('snog_tv_started_x_threads') }}">
+	<xf:numberbox name="user_criteria[tv_posted][data][tv]" value="{$criteria.tv_posted.tv}"
+		size="5" min="0" step="1" />
+</xf:option>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="snogTV17" description="Changes node icon to TV poster (template: snog_tv_node_poster)" execution_order="11" enabled="1" action="preg_replace">
+    <find><![CDATA[/<span class="node-icon" aria-hidden="true">(.*?)<\/span>/s]]></find>
+    <replace><![CDATA[<xf:if is="$node.TVForum is not empty">
+	<xf:include template="snog_tv_node_poster" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="snogTV19" description="Adds TV show info to forum list (template: snog_tv_node_info)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$descriptionDisplay != 'none' && $node.description">]]></find>
+    <replace><![CDATA[<xf:if is="$node.TVForum is not empty">
+	<xf:include template="snog_tv_node_info" />
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="node_list_forum" modification_key="snogTV33" description="Adds tv show rating stars to node list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="node-stats">]]></find>
+    <replace><![CDATA[$0
+<xf:if is="!$node.TVForum.tv_parent_id && $node.TVForum.tv_id">
+	<xf:macro template="rating_macros" name="stars" arg-rating="{$node.TVForum.tv_rating}"/>
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogTV1" description="Adds formatted tv show display to first post in thread (templates: snog_tv_show)" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#{{ bb_code\(.*\) }}#Us]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is not empty && !$thread.TV.tv_episode && $post.isFirstPost()">
+	<xf:include template="snog_tv_show" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogTV14" description="Adds formatted tv episode display to posts in thread (template: snog_tv_episode)" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#{{ bb_code\(.*\) }}#Us]]></find>
+    <replace><![CDATA[<xf:if is="$post.TVPost.tv_episode">
+	<xf:include template="snog_tv_episode" />
+<xf:else />
+	$0
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogTV32" description="Removes reply link from TV thread" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$thread.canReply().+xf:if>.+xf:if>/isU]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is empty || !$post.isFirstPost()">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogTV34" description="Removes edit from first post in thread when thread is a TV thread" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[/<xf:if is="\$post\.canEdit\(\)">.*<a href="{{ link\('posts\/edit.*<\/xf:if>/Us]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is empty || (!$post.isFirstPost() && $post.TVPost is empty)">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogTV35" description="Adds show edit link to bottom of first post in thread (template: snog_tv_edit_show_link)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$post.edit_count && $post.canViewHistory()">]]></find>
+    <replace><![CDATA[<xf:include template="snog_tv_edit_show_link" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogTV40" description="Adds edit episode link to episode posts (template: snog_tv_edit_episode_link)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:if is="$post.edit_count && $post.canViewHistory()">]]></find>
+    <replace><![CDATA[<xf:include template="snog_tv_edit_episode_link" />
+$0]]></replace>
+  </modification>
+  <modification type="public" template="post_macros" modification_key="snogTV53" description="Removes like from first post in XF 2.1" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:react content="{$post}" link="posts/react" list="< .js-post | .js-reactionsList" />]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is empty || !$post.isFirstPost()">
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="snogTV11" description="Adds tv episode input to quick reply (template: snog_tv_quick_reply_episode)" execution_order="8" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:editor name="message".*\/>#Us]]></find>
+    <replace><![CDATA[<xf:if is="$thread && $thread.TV is not empty && !$thread.TV.tv_episode">
+	$0
+	<xf:include template="snog_tv_quick_reply_episode" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="snogTV13" description="Adds thread info to quick reply macro" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-message=""]]></find>
+    <replace><![CDATA[$0
+arg-thread=""]]></replace>
+  </modification>
+  <modification type="public" template="quick_reply_macros" modification_key="snogTV50" description="Adds TV info to quick reply macro in XF 2.1" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[arg-message="{$message}"]]></find>
+    <replace><![CDATA[$0
+arg-thread="{$thread}"]]></replace>
+  </modification>
+  <modification type="public" template="search_result_thread" modification_key="snog_tv_search_result_thread" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:avatar user="{$thread.User}" size="s" defaultname="{$thread.username}" />]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is not empty">
+	<xf:include template="snog_tv_search_result_thread_poster" />
+<xf:else />
+	$0
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="snogTV2" description="Adds TV info to thread list (template snog_tv_tvinfo)" execution_order="9" enabled="1" action="preg_replace">
+    <find><![CDATA[/<ul class="structItem-parts">.*<\/ul>/Us]]></find>
+    <replace><![CDATA[<xf:if is="$forum && in_array({$forum.node_id}, $xf.options.TvThreads_forum) && $thread.TV is not empty && !$thread.TV.tv_episode">
+	<xf:include template="snog_tv_tvinfo" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="snogTV3" description="Adds TV poster to thread list (template: snog_tv_thread_list_poster)" execution_order="9" enabled="1" action="preg_replace">
+    <find><![CDATA[#(<div class="structItem-cell structItem-cell--icon">.*<xf:if.*<\/div>.*<\/div>)#sU]]></find>
+    <replace><![CDATA[<xf:if is="($forum && in_array({$forum.node_id}, $xf.options.TvThreads_forum))">
+	<xf:include template="snog_tv_thread_list_poster" />
+<xf:else />
+	$0
+</xf:if>
+]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="snogTV30" description="Adds rating stars to thread list" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="structItem-title]]></find>
+    <replace><![CDATA[<xf:if is="($forum && in_array($forum.node_id, $xf.options.TvThreads_forum)) && $xf.options.TvThreads_use_rating && $thread.TV is not empty">
+	<ul class="structItem-extraInfo">
+		<li>
+			<xf:macro template="rating_macros" name="stars" arg-rating="{$thread.TV.tv_rating}"/>
+		</li>
+	</ul>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_list_macros" modification_key="snogTV6" description="Changes quick new thread prompt for TV forums (template: snog_tv_quick_reply_forum)" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:prefixinput(.*)\/>#Us]]></find>
+    <replace><![CDATA[<xf:if is="$forum && in_array($forum.node_id, $xf.options.TvThreads_forum)">
+	<xf:include template="snog_tv_quick_reply_forum" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="SnogTV43" description="Adds required TMDb attribution at bottom of thread" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<div class="block-outer block-outer--after">]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is not empty && $page <= 1">
+	<span class="tvhint">{{ phrase('snog_tv_information')}}</span>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snogTV12" description="Adds thread info to quick reply macro call" execution_order="1" enabled="1" action="str_replace">
+    <find><![CDATA[arg-message="{$thread.draft_reply.message}"]]></find>
+    <replace><![CDATA[$0
+arg-thread="{$thread}"]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snogTV15" description="Changes script for quick reply to allow clearing of other fields (js: Snog/TV/message.min.js)" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<xf:js src="xf/message.js" min="1" />]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV is not empty && !$thread.TV.tv_episode">
+	<xf:js src="Snog/TV/message.min.js" />
+<xf:else />
+	$0
+</xf:if>]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snogTV36" description="Adds check for new poster to menu" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
+    <replace><![CDATA[<xf:if is="$thread.TV && ($xf.visitor.is_admin || $xf.visitor.is_moderator) && !$thread.TV.tv_season">
+	<a href="{{ link('tv/poster', $thread.TV) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('snog_tv_check_poster') }}</a>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snogTV37" description="Adds add tv info to menu" execution_order="10" enabled="1" action="str_replace">
+    <find><![CDATA[<!--[XF:thread_tools_menu:before_footer]-->]]></find>
+    <replace><![CDATA[<xf:if is="in_array($forum.node_id, $xf.options.TvThreads_forum) && $xf.options.TvThreads_update">
+	<xf:if is="!$thread.TV && $canAddTVInfo">
+		<a href="{{ link('tv/addinfo', $thread) }}" data-xf-click="overlay" class="menu-linkRow">{{ phrase('snog_tv_add_info') }}</a>
+	</xf:if>
+</xf:if>
+$0]]></replace>
+  </modification>
+  <modification type="public" template="thread_view" modification_key="snogTV48" description="Removes create poll from more options in TV thread" execution_order="10" enabled="1" action="preg_replace">
+    <find><![CDATA[#<xf:if is="\$thread\.canCreatePoll.*<\/xf:if>#Us]]></find>
+    <replace><![CDATA[<xf:if is="!in_array($forum.node_id, $xf.options.TvThreads_forum)">
+	$0
+</xf:if>]]></replace>
+  </modification>
+</template_modifications>
