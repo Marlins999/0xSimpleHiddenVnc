@@ -1,0 +1,28 @@
+name: Unzip Uploaded File
+
+on:
+  push:
+    paths:
+      - '**.zip'
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Extract ZIP files
+      run: |
+        for file in *.zip; do
+          unzip "$file" -d extracted
+          rm "$file"
+        done
+        mv extracted/* . || true
+        rm -r extracted || true
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add .
+        git commit -m "Extracted ZIP file"
+        git push
